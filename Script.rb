@@ -9,7 +9,8 @@
 #
 # To this script works, put it above main OR convert into a plugin. On script 
 # section PScreen_RegionMap, add line 'draw_roaming_position(mapindex)' 
-# before line 'if playerpos && mapindex==playerpos[0]'. 
+# before line 'if playerpos && mapindex == playerpos[0]' (it is 
+# 'if playerpos && mapindex==playerpos[0]' in Essentials v19 and v19.1). 
 #
 # Put the desired icons on "Graphics\Pokemon\Map icons\X.png" changing X for 
 # species internal name, where "Graphics\Pokemon\Map icons\000.png" is the
@@ -21,7 +22,7 @@
 if !PluginManager.installed?("Roaming Icon")
   PluginManager.register({                                                 
     :name    => "Roaming Icon",                                        
-    :version => "1.1",                                                     
+    :version => "1.1.1",                                                     
     :link    => "https://www.pokecommunity.com/showthread.php?t=438704",             
     :credits => "FL"
   })
@@ -46,10 +47,10 @@ class PokemonRegionMap_Scene
       @sprites["roaming#{icon_index}"].setBitmap(
         get_roaming_icon(Settings::ROAMING_SPECIES[roam_pos[0]][0])
       )
-      @sprites["roaming#{icon_index}"].x = -SQUAREWIDTH/2+(x*SQUAREWIDTH)+(
+      @sprites["roaming#{icon_index}"].x = -SQUARE_WIDTH/2+(x*SQUARE_WIDTH)+(
         Graphics.width-@sprites["map"].bitmap.width
       )/2
-      @sprites["roaming#{icon_index}"].y = -SQUAREHEIGHT/2+(y*SQUAREHEIGHT)+(
+      @sprites["roaming#{icon_index}"].y = -SQUARE_HEIGHT/2+(y*SQUARE_HEIGHT)+(
         Graphics.height-@sprites["map"].bitmap.height
       )/2
       icon_index+=1
@@ -70,4 +71,8 @@ class PokemonRegionMap_Scene
     return ret if ret
     return pbResolveBitmap(path+"000")
   end
+
+  # Essentials v19 compatibility
+  SQUARE_WIDTH = SQUAREWIDTH if !defined?(SQUARE_WIDTH)
+  SQUARE_HEIGHT = SQUAREHEIGHT if !defined?(SQUARE_HEIGHT)
 end
