@@ -8,9 +8,8 @@
 #== INSTALLATION ===============================================================
 #
 # To this script works, put it above main OR convert into a plugin. On script 
-# section UI_RegionMap, add line 'draw_roaming_position(mapindex)' before line 
-# 'if playerpos && mapindex == playerpos[0]' (it is 
-# 'if playerpos && mapindex==playerpos[0]' in Essentials v19 and v19.1). 
+# section UI_RegionMap, add line 'draw_roaming_position(mapindex)' before 
+# line 'k = 0' (it is 'if mode>0' in Essentials v19 and v19.1). 
 #
 # Put the desired icons on "Graphics\Pokemon\Map icons\X.png" changing X for 
 # species internal name, where "Graphics\Pokemon\Map icons\000.png" is the
@@ -22,7 +21,7 @@
 if !PluginManager.installed?("Roaming Icon")
   PluginManager.register({                                                 
     :name    => "Roaming Icon",                                        
-    :version => "1.1.2",                                                     
+    :version => "1.1.3",                                                     
     :link    => "https://www.pokecommunity.com/showthread.php?t=438704",             
     :credits => "FL"
   })
