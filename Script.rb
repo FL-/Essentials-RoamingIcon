@@ -21,7 +21,7 @@
 if !PluginManager.installed?("Roaming Icon")
   PluginManager.register({                                                 
     :name    => "Roaming Icon",                                        
-    :version => "1.1.3",                                                     
+    :version => "1.1.4",                                                     
     :link    => "https://www.pokecommunity.com/showthread.php?t=438704",             
     :credits => "FL"
   })
@@ -39,7 +39,7 @@ class PokemonRegionMap_Scene
       roam_town_map_pos = GameData::MapMetadata.try_get(
         roam_pos[1]
       )&.town_map_position
-      next if mapindex!=roam_town_map_pos[0]
+	  next if mapindex!=roam_town_map_pos&.[](0)
       x = roam_town_map_pos[1]
       y = roam_town_map_pos[2]
       @sprites["roaming#{icon_index}"] = IconSprite.new(0,0,@viewport)
